@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修饰符</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <p>事件修饰符</p>
+            <li>.prevent: 用于阻止默认事件行为，相当于 event.preventDefault()</li>
+            <li>.stop: 用于阻止事件传播，相当于 event.stopPropagation()</li>
+            <li>.once: 用于设置事件只会触发一次</li>
+            <li>修饰符可以连续书写： 例如 @click.prevent.once</li>
+
+            <p>按键修饰符</p>
+            <li>.enter 点击回车键</li>
+            <li>.esc 点击 esc 键</li>
+
+            <p>系统修饰符</p>
+            <li>.ctrl</li>
+            <li>.alt</li>
+            <li>.shift</li>
+
+            <p>鼠标修饰符</p>
+            <li>.left 鼠标左键</li>
+            <li>.right 鼠标右键</li>
+            <li>.middle 鼠标中键</li>
+        </ul>
+    </div>
+
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

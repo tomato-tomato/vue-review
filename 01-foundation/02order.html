@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue order</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{title}}</p>
+        <p v-once>{{title}} test v-once</p>
+
+        <p>hello today</p>
+        <p v-text="content">hello today test v-text</p>
+
+        <p :title="title">这是一段文本内容 test :title</p>
+
+        <p :class="cls">class test bind</p>
+        <p :class="{a: isA, 'cls-b': isB}">class test</p>
+        <p :class="arr">class test array for class</p>
+
+        <div style="color: #0ff;">style test</div>
+        <div :style="styleobj1" style="color: #0ff;">style test</div>
+        <div :style="[styleobj1, styleobj2]" style="color: #0ff;">style test</div>
+
+        <ul>
+            <li v-for="item in arr" :key="item.id">{{item}}</li>
+        </ul>
+        <ol>
+            <li v-for="(item, index) in arr" :key="item.id">{{index+1}} - {{item}}</li>
+        </ol>
+        
+        <p v-show="true">True</p>
+        <p v-show="false">False</p>
+
+        <p v-if="true">True</p>
+        <p v-if="false">False</p>
+        <!-- v-for 和 v-if一起使用时，v-for 优先级更高，为提高效率，可以将 v-if 设置给父元素 -->
+
+        <input type="text" v-focus>
+
+    </div>
+
+
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data(){
+                return {
+                    title: 'hello world',
+                    content: 'Monday',
+                    arr: ['luke', 'tom', 'jerry'],
+                    cls: 'warning',
+                    isA: true,
+                    isB: false,
+                    styleobj1: {
+                        width: '100px',
+                        border: '1px solid #ccc',
+                    },
+                    styleobj2: {
+                        fontSize: '20px',
+                        color: '#358'
+                    }
+                }
+            },
+            // 自定义局部指令
+            directive: {
+                focus: {
+                    inserted (el) {
+                        el.focus();
+                    }
+                }
+            }
+        })
+
+        // 自定义全局指令定义，可以被任意 Vue实例或组件使用
+        Vue.directive('focus', {
+            // 当绑定的元素插入到 DOM中时执行
+            inserted: function(el){
+                el.focus();
+            }
+        });
+
+        vm.title = "Vue";
+    </script>
+</body>
+</html>

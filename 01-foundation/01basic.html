@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue basic</title>
+</head>
+<body>
+    <div id="app">{{hel}}</div>
+
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            /* 
+                只有声明在data 中的数据才能在修改后自动更新到视图中，称为响应式数据
+                data中存在数组时，索引操作和length操作无法自动更新视图，可以借助 Vue.set()方法替代
+            */
+            data() {
+                return {
+                    hel: 'hello vue',
+                    arr: ['luke', 'tom', 'jerry']
+                }
+            },
+            methods: {
+                output() {
+                    console.log(this.hel);
+                }
+            }
+        })
+        console.log(vm.$data.hel);
+        console.log(vm.hel);
+        
+        vm.arr.length = 0; // 无效
+        vm.arr[2] = 'hello'; // 无效
+        Vue.set(vm.arr, 2, 'hello'); // 生效
+    </script>
+</body>
+</html>

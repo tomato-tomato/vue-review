@@ -1,0 +1,25 @@
+{
+  "name": "vue-review",
+  "version": "1.0.0",
+  "description": "vue 复习及知识点整理",
+  "main": "index.js",
+  "scripts": {
+    "hs": "http-server",
+    "bs": "browser-sync"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomato-tomato/vue-review.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomato-tomato/vue-review/issues"
+  },
+  "homepage": "https://github.com/tomato-tomato/vue-review#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "http-server": "^0.12.3"
+  }
+}

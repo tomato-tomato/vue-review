@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter, Computed, Watch</title>
+</head>
+<body>
+    <div id="app">
+        {{ result }}
+
+        <input type="text" v-model="num">
+    </div>
+
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    arr: [1,4,6,8,9],
+                    num: 0
+                }
+            },
+            computed: {
+                result() {
+                    var arr = this.arr;
+                    var sum = 0;
+                    for (var i = 0; i < arr.length; i++) {
+                        sum += arr[i];
+                    }
+                    return sum;
+                }
+            },
+            watch: {
+                num (newv, oldv){
+                    this.arr.push(Number(newv))
+                }
+            }
+        })
+
+        /*
+            computed 与 methods 的区别
+            - computed 用于计算操作，具有缓存性，只有当内部依赖的数据改变后，下次获取computed时菜会重新执行计算；否则多次获取 computed值指挥读取缓存的结果，不会重新执行
+            - methods 无缓存性，每次调用哦都会执行，常用于处理非计算操作
+
+            watch 用于监听数据变化并执行指定操作
+        
+        */
+    </script>
+</body>
+</html>
